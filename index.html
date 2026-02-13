@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Valentines Papa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE SETUP --- */
+        *, *::after, *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* --- CHANGED: Light Red to Light Blue Gradient --- */
+            background: linear-gradient(to bottom, #ffcdd2, #b3e5fc);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden; 
+        }
+
+        /* --- 1. BACKGROUND HEART ANIMATION --- */
+        #heart-bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind the letter */
+            pointer-events: none;
+            opacity: 0; /* Will fade in via JS */
+            transition: opacity 1.5s ease-in;
+            mix-blend-mode: multiply; 
+        }
+
+        /* --- 2. LETTER CONTAINER --- */
+        #letter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh;
+            position: relative;
+            z-index: 50; /* Sits ABOVE the background hearts */
+            padding: 20px 10px;
+            
+            /* Fade in animation */
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PAPER STYLES --- */
+        .paper-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            background-color: #fffdf5; 
+            padding: 50px 40px; 
+            
+            /* Styling to match the Red/Blue theme */
+            border: 5px dashed #5c6bc0; /* Indigo/Blueish border */
+            outline: 8px solid #fffdf5; 
+            box-shadow: 0 0 0 10px #fffdf5, 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            
+            /* Lined Paper Pattern */
+            background-image: 
+                linear-gradient(#e1e1e1 1px, transparent 1px), 
+                linear-gradient(90deg, #e1e1e1 1px, transparent 1px); 
+            background-size: 25px 25px; 
+            background-position: center top;
+        }
+
+        .header-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ef5350; /* Red Title */
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+        }
+
+        .header-underline {
+            width: 60%;
+            height: 3px;
+            background-color: #ef5350;
+            margin: 0 auto 30px auto;
+            border-radius: 2px;
+        }
+
+        /* Icons */
+        .icon-winged-heart {
+            position: absolute;
+            top: -25px; left: -25px; width: 100px; height: 100px;
+            filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+            z-index: 20; transform: rotate(-15deg); 
+        }
+
+        .icon-vase {
+            position: absolute;
+            bottom: -10px; right: -10px; width: 120px; height: auto;
+            z-index: 30; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+        }
+
+        /* Text Content */
+        .letter-content {
+            font-size: 1.25rem;
+            line-height: 30px; 
+            color: #37474f; /* Dark Blue-Grey text */
+            position: relative;
+            z-index: 5; 
+            padding: 15px;
+            background-color: rgba(255, 253, 245, 0.7); 
+            border-radius: 8px;
+        }
+
+        .salutation {
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+            text-indent: 30px; 
+            text-align: justify; 
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ef5350;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 600px) {
+            .paper-container {
+                padding: 30px 20px; 
+                outline: 5px solid #fffdf5; 
+                box-shadow: 0 0 0 6px #fffdf5, 0 10px 20px rgba(0,0,0,0.2);
+            }
+
+            .header-title {
+                font-size: 2.2rem; 
+                margin-top: 10px;
+            }
+
+            .letter-content {
+                font-size: 1rem; 
+                line-height: 1.6;
+                padding: 10px;
+            }
+
+            .icon-winged-heart {
+                width: 70px; 
+                height: 70px;
+                top: -15px;
+                left: -10px;
+            }
+
+            .icon-vase {
+                width: 80px;
+                bottom: -5px;
+                right: -5px;
+            }
+
+            .signature {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Hearts Animation Keyframes */
+        @keyframes strokeAnim {
+            0% { stroke-dashoffset: -1180px; }
+            35%, 65% { stroke-dashoffset: 0px; }
+            100% { stroke-dashoffset: 1180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="heart-bg-container"></div>
+
+    <div id="letter-container">
+        
+        <div class="paper-container">
+            <svg class="icon-winged-heart" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20,40 Q5,25 25,10 Q35,5 45,25" fill="white" stroke="#333" stroke-width="2" />
+                <path d="M80,40 Q95,25 75,10 Q65,5 55,25" fill="white" stroke="#333" stroke-width="2" />
+                <path d="M50,70 Q20,40 25,25 A12,12 0 0,1 50,25 A12,12 0 0,1 75,25 Q80,40 50,70 Z" 
+                      fill="#ef5350" stroke="#333" stroke-width="2"/>
+                <ellipse cx="60" cy="25" rx="4" ry="2" fill="white" opacity="0.6" transform="rotate(-45 60 25)"/>
+            </svg>
+
+            <h1 class="header-title">HAPPY VALENTINES</h1>
+            <div class="header-underline"></div>
+
+            <div class="letter-content">
+                <span class="salutation">To Papa,</span>
+                
+                <p>
+                    Thank you for always supporting me from afar, even if I didn't always message or call you remember that I always love you pa. Thank you for working for us even if you'll sacrifice yourself by being away from here. Ingat ka po lagi diyan pa!
+                </p>
+                
+                <p>
+                    I love you, Papa. I will do my best to finish school so I can help you and Mama soon.
+                </p>
+                
+                <div class="signature">-Love, Ahyen</div>
+            </div>
+
+            <svg class="icon-vase" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,90 Q40,70 30,50" stroke="green" stroke-width="3" fill="none"/>
+                <path d="M50,90 Q50,60 50,30" stroke="green" stroke-width="3" fill="none"/>
+                <path d="M50,90 Q60,70 70,50" stroke="green" stroke-width="3" fill="none"/>
+                
+                <path d="M30,50 Q20,40 30,30 Q40,40 30,50 Z" fill="#ef5350" stroke="#333" stroke-width="1"/>
+                <path d="M50,30 Q40,20 50,10 Q60,20 50,30 Z" fill="#42a5f5" stroke="#333" stroke-width="1"/>
+                <path d="M70,50 Q60,40 70,30 Q80,40 70,50 Z" fill="#ef5350" stroke="#333" stroke-width="1"/>
+                
+                <path d="M35,90 Q30,90 35,115 Q40,120 50,120 Q60,120 65,115 Q70,90 65,90 Z" 
+                      fill="#81d4fa" stroke="#333" stroke-width="2" opacity="0.95"/>
+                <path d="M38,100 Q40,110 38,115" stroke="white" stroke-width="2" fill="none" opacity="0.6"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // --- HEART BACKGROUND GENERATOR ---
+        function createHeartBackground() {
+            const container = document.getElementById('heart-bg-container');
+            const svgNS = "http://www.w3.org/2000/svg";
+            const xlinkNS = "http://www.w3.org/1999/xlink";
+            
+            const svg = document.createElementNS(svgNS, "svg");
+            svg.setAttribute("viewBox", "-200 -150 4000 3000");
+            svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+            svg.style.width = "100%";
+            svg.style.height = "100%";
+            
+            const defs = document.createElementNS(svgNS, "defs");
+            defs.innerHTML = `
+                <clipPath id="c">
+                    <path id="heart" d="M-50 156c369-94 309-406 72-203c42-218-391-53-89 195" />
+                </clipPath>
+                <mask id="m" maskUnits="userSpaceOnUse">
+                    <rect x="-200" y="-150" width="410" height="310" fill="#fff"/>
+                    <path d="M-50 156c349-101 289-386 62-183c42-205-346-83-79 175" fill="#000"/>
+                </mask>
+            `;
+            svg.appendChild(defs);
+
+            const n = 8, w = 400, h = 300;
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    const use = document.createElementNS(svgNS, "use");
+                    use.setAttributeNS(xlinkNS, "href", "#heart");
+                    
+                    const x = i * 1.25 * w;
+                    const y = j * 1.25 * h;
+                    const a = Math.floor(Math.random() * 50 - 30);
+                    const f = Math.pow(-1, i + j) * Math.random() * 0.25 + 1;
+                    const d = Math.floor(Math.random() * 50 - 30);
+                    
+                    use.setAttribute("transform", `translate(${x} ${y}) rotate(${a}) scale(${f}) skewX(${d})`);
+                    
+                    // --- CHANGED: Color Logic for Red/Blue Background ---
+                    // Generates colors ranging from Reds to Purples to Blues
+                    const hVal = 340 + Math.random() * 60; // Hue 340 (Red) to 400/40 (Orange) - adjusted for CSS HSL
+                    // Actually, let's span Red (0/360) to Blue (240).
+                    // We'll pick randomly between Red range and Blue range.
+                    
+                    let finalHue;
+                    if(Math.random() > 0.5) {
+                        finalHue = 340 + Math.random() * 30; // Red/Pinkish
+                    } else {
+                        finalHue = 200 + Math.random() * 40; // Blueish
+                    }
+
+                    const sVal = 70 + Math.random() * 20; // Saturation
+                    const lVal = 40 + Math.random() * 20; // Lightness
+                    
+                    // Timing (10s to 20s)
+                    const duration = 10 + Math.random() * 10;
+                    const delay = -1 * Math.random() * duration;
+
+                    use.style.stroke = `hsl(${finalHue}, ${sVal}%, ${lVal}%)`;
+                    use.style.fill = "none";
+                    use.style.strokeWidth = "45";
+                    use.style.strokeDasharray = "1180";
+                    use.style.clipPath = "url(#c)";
+                    use.style.mask = "url(#m)";
+                    use.style.animation = `strokeAnim ${duration}s ease-in-out infinite`;
+                    use.style.animationDelay = `${delay}s`;
+
+                    svg.appendChild(use);
+                }
+            }
+            container.appendChild(svg);
+        }
+
+        // --- MAIN EXECUTION ---
+        onload = () => {
+            // Generate Background
+            createHeartBackground();
+            
+            // Show background immediately
+            document.getElementById('heart-bg-container').style.opacity = '1';
+        };
+    </script>
+</body>
+</html>
