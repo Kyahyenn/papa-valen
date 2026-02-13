@@ -18,8 +18,8 @@
         }
 
         body {
-            /* --- CHANGED: Light Red to Light Blue Gradient --- */
-            background: linear-gradient(to bottom, #ffcdd2, #b3e5fc);
+            /* --- CHANGED: Red to Light Blue Gradient --- */
+            background: linear-gradient(to bottom, #ff9a9e, #a1c4fd);
             background-repeat: no-repeat;
             background-attachment: fixed;
             min-height: 100vh;
@@ -50,7 +50,7 @@
             min-height: 100vh;
             position: relative;
             z-index: 50; /* Sits ABOVE the background hearts */
-            padding: 20px 10px;
+            padding: 20px 15px; /* Adjusted padding for iPhone 13 Mini */
             
             /* Fade in animation */
             opacity: 0;
@@ -71,10 +71,10 @@
             background-color: #fffdf5; 
             padding: 50px 40px; 
             
-            /* Styling to match the Red/Blue theme */
-            border: 5px dashed #5c6bc0; /* Indigo/Blueish border */
+            /* Blue/Red Theme Border */
+            border: 5px dashed #5c6bc0; /* Indigo/Blue border */
             outline: 8px solid #fffdf5; 
-            box-shadow: 0 0 0 10px #fffdf5, 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 0 10px #fffdf5, 0 15px 35px rgba(0, 0, 0, 0.15);
             border-radius: 5px;
             
             /* Lined Paper Pattern */
@@ -88,9 +88,9 @@
         .header-title {
             text-align: center;
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: #ef5350; /* Red Title */
-            margin: 0 0 10px 0;
+            font-size: 3.2rem;
+            color: #d32f2f; /* Strong Red for Header */
+            margin: 0 0 15px 0;
             text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
             position: relative;
             z-index: 2;
@@ -100,7 +100,7 @@
         .header-underline {
             width: 60%;
             height: 3px;
-            background-color: #ef5350;
+            background-color: #d32f2f;
             margin: 0 auto 30px auto;
             border-radius: 2px;
         }
@@ -108,21 +108,21 @@
         /* Icons */
         .icon-winged-heart {
             position: absolute;
-            top: -25px; left: -25px; width: 100px; height: 100px;
+            top: -25px; left: -20px; width: 90px; height: 90px;
             filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
             z-index: 20; transform: rotate(-15deg); 
         }
 
         .icon-vase {
             position: absolute;
-            bottom: -10px; right: -10px; width: 120px; height: auto;
+            bottom: -10px; right: -10px; width: 110px; height: auto;
             z-index: 30; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
         }
 
         /* Text Content */
         .letter-content {
-            font-size: 1.25rem;
-            line-height: 30px; 
+            font-size: 1.2rem;
+            line-height: 1.6; 
             color: #37474f; /* Dark Blue-Grey text */
             position: relative;
             z-index: 5; 
@@ -136,6 +136,7 @@
             font-style: italic;
             margin-bottom: 25px;
             display: block;
+            color: #283593; /* Deep Blue for "To Papa" */
         }
 
         .letter-content p {
@@ -147,29 +148,40 @@
         .signature {
             margin-top: 30px;
             font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: #ef5350;
+            font-size: 1.8rem;
+            color: #d32f2f;
             text-align: right;
             margin-right: 10px;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
+        /* --- MOBILE RESPONSIVENESS (iPhone 13 Mini & others) --- */
         @media (max-width: 600px) {
             .paper-container {
-                padding: 30px 20px; 
+                padding: 35px 25px; /* Optimize space */
                 outline: 5px solid #fffdf5; 
                 box-shadow: 0 0 0 6px #fffdf5, 0 10px 20px rgba(0,0,0,0.2);
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
 
             .header-title {
-                font-size: 2.2rem; 
-                margin-top: 10px;
+                font-size: 2.5rem; 
+                margin-top: 5px;
             }
 
             .letter-content {
-                font-size: 1rem; 
-                line-height: 1.6;
+                font-size: 1.05rem; /* Readable on small screens */
+                line-height: 1.5;
                 padding: 10px;
+            }
+
+            .salutation {
+                margin-bottom: 15px;
+            }
+
+            .letter-content p {
+                margin-bottom: 15px;
+                text-indent: 20px;
             }
 
             .icon-winged-heart {
@@ -186,7 +198,8 @@
             }
 
             .signature {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+                margin-top: 20px;
             }
         }
 
@@ -209,7 +222,7 @@
                 <path d="M20,40 Q5,25 25,10 Q35,5 45,25" fill="white" stroke="#333" stroke-width="2" />
                 <path d="M80,40 Q95,25 75,10 Q65,5 55,25" fill="white" stroke="#333" stroke-width="2" />
                 <path d="M50,70 Q20,40 25,25 A12,12 0 0,1 50,25 A12,12 0 0,1 75,25 Q80,40 50,70 Z" 
-                      fill="#ef5350" stroke="#333" stroke-width="2"/>
+                      fill="#5c6bc0" stroke="#333" stroke-width="2"/>
                 <ellipse cx="60" cy="25" rx="4" ry="2" fill="white" opacity="0.6" transform="rotate(-45 60 25)"/>
             </svg>
 
@@ -235,12 +248,12 @@
                 <path d="M50,90 Q50,60 50,30" stroke="green" stroke-width="3" fill="none"/>
                 <path d="M50,90 Q60,70 70,50" stroke="green" stroke-width="3" fill="none"/>
                 
-                <path d="M30,50 Q20,40 30,30 Q40,40 30,50 Z" fill="#ef5350" stroke="#333" stroke-width="1"/>
-                <path d="M50,30 Q40,20 50,10 Q60,20 50,30 Z" fill="#42a5f5" stroke="#333" stroke-width="1"/>
-                <path d="M70,50 Q60,40 70,30 Q80,40 70,50 Z" fill="#ef5350" stroke="#333" stroke-width="1"/>
+                <path d="M30,50 Q20,40 30,30 Q40,40 30,50 Z" fill="#d32f2f" stroke="#333" stroke-width="1"/>
+                <path d="M50,30 Q40,20 50,10 Q60,20 50,30 Z" fill="#3949ab" stroke="#333" stroke-width="1"/>
+                <path d="M70,50 Q60,40 70,30 Q80,40 70,50 Z" fill="#d32f2f" stroke="#333" stroke-width="1"/>
                 
                 <path d="M35,90 Q30,90 35,115 Q40,120 50,120 Q60,120 65,115 Q70,90 65,90 Z" 
-                      fill="#81d4fa" stroke="#333" stroke-width="2" opacity="0.95"/>
+                      fill="#e3f2fd" stroke="#333" stroke-width="2" opacity="0.95"/>
                 <path d="M38,100 Q40,110 38,115" stroke="white" stroke-width="2" fill="none" opacity="0.6"/>
             </svg>
         </div>
@@ -285,27 +298,27 @@
                     
                     use.setAttribute("transform", `translate(${x} ${y}) rotate(${a}) scale(${f}) skewX(${d})`);
                     
-                    // --- CHANGED: Color Logic for Red/Blue Background ---
-                    // Generates colors ranging from Reds to Purples to Blues
-                    const hVal = 340 + Math.random() * 60; // Hue 340 (Red) to 400/40 (Orange) - adjusted for CSS HSL
-                    // Actually, let's span Red (0/360) to Blue (240).
-                    // We'll pick randomly between Red range and Blue range.
-                    
-                    let finalHue;
-                    if(Math.random() > 0.5) {
-                        finalHue = 340 + Math.random() * 30; // Red/Pinkish
-                    } else {
-                        finalHue = 200 + Math.random() * 40; // Blueish
-                    }
+                    // --- COLOR LOGIC: Mix of Reds and Blues ---
+                    const isBlue = Math.random() > 0.5;
+                    let hVal, sVal, lVal;
 
-                    const sVal = 70 + Math.random() * 20; // Saturation
-                    const lVal = 40 + Math.random() * 20; // Lightness
+                    if (isBlue) {
+                        // Blue tones (200-240)
+                        hVal = 200 + Math.random() * 40;
+                        sVal = 60 + Math.random() * 30;
+                        lVal = 40 + Math.random() * 20;
+                    } else {
+                        // Red tones (340-360 / 0-10)
+                        hVal = 340 + Math.random() * 30;
+                        sVal = 60 + Math.random() * 30;
+                        lVal = 40 + Math.random() * 20;
+                    }
                     
                     // Timing (10s to 20s)
                     const duration = 10 + Math.random() * 10;
                     const delay = -1 * Math.random() * duration;
 
-                    use.style.stroke = `hsl(${finalHue}, ${sVal}%, ${lVal}%)`;
+                    use.style.stroke = `hsl(${hVal}, ${sVal}%, ${lVal}%)`;
                     use.style.fill = "none";
                     use.style.strokeWidth = "45";
                     use.style.strokeDasharray = "1180";
